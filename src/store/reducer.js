@@ -3,20 +3,10 @@ import storage from 'redux-persist/lib/storage';
 import persistReducer from 'redux-persist/es/persistReducer';
 import { authorizationReducer } from './authorization/authorizationSlice';
 
-const persistConfig = {
-  key: 'contacts',
-  storage,
-  whitelist: ['contacts'],
-  blacklist: [''],
-};
-
-const persistedReducer = persistReducer(persistConfig, contactsReducer);
-
 const persistConfigAuth = {
   key: 'token',
   storage,
   whitelist: ['token'],
-  blacklist: ['user'],
 };
 
 const persistedReducerAuth = persistReducer(
@@ -25,6 +15,6 @@ const persistedReducerAuth = persistReducer(
 );
 
 export const reducer = {
-  contacts: persistedReducer,
+  contacts: contactsReducer,
   authorization: persistedReducerAuth,
 };
