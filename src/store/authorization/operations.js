@@ -7,5 +7,5 @@ export const registration = async user => {
   console.log('axios', user);
   const response = await axios.post(`/users/signup`, user);
   console.log(response);
-  return response.data;
+  return response;
 };

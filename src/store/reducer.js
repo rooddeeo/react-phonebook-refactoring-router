@@ -1,7 +1,7 @@
 import { contactsReducer } from './contacts/contactsSlice';
 import storage from 'redux-persist/lib/storage';
 import persistReducer from 'redux-persist/es/persistReducer';
-import { authorizationReducer } from './authorization/slice';
+import { authorizationReducer } from './authorization/authorizationSlice';
 
 const persistConfig = {
   key: 'contacts',
