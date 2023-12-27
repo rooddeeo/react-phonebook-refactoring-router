@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { addContactNew } from 'store/contacts/operations';
+import { registration } from './authAPI';
 
-export const registerThank = createAsyncThunk('contacts/operations', contact =>
-  addContactNew(contact)
+export const registerThank = createAsyncThunk('authorization/register', user =>
+  registration(user)
 );

@@ -5,12 +5,12 @@ const authorizationSlice = createSlice({
   name: 'authorization',
   initialState: {
     token: '',
-    name: null,
+    user: null,
   },
   extraReducers: builder => {
     builder.addCase(registerThank.fulfilled, (state, { payload }) => {
       state.token = payload.token;
-      state.name = payload.name;
+      state.user = payload.user;
     });
   },
 });

@@ -1,18 +1,17 @@
 import { Link } from 'react-router-dom';
 import css from './RegisterForm.module.css';
-import { addContactNew } from '../../store/contacts/operations';
 import { useDispatch } from 'react-redux';
 
-const RegisterForm = () => {
+const RegisterForm = ({ register }) => {
   const dispatch = useDispatch();
   const handleSubmit = event => {
     event.preventDefault();
-    const addContact = {
+    const newUser = {
       name: event.target.name.value,
       email: event.target.email.value,
       password: event.target.password.value,
     };
-    dispatch(addContactNew(addContact));
+    dispatch(register(newUser));
   };
   return (
     <div className={css.registerForm}>
