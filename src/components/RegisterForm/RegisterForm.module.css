@@ -22,10 +22,9 @@
 .registerInputForm {
   color: #fff;
   height: 20px;
-  border-radius: 5px;
   margin-bottom: 20px;
   background-color: transparent;
-  border: 1px solid rgb(57, 182, 231);
+  border-bottom: 1px solid rgb(57, 182, 231);
 }
 
 .registerInputForm:focus {
