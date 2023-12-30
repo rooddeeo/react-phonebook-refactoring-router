@@ -1,16 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { loginThank, logoutThank, registerThank } from './thanks';
+import { loginThank, logoutThank, refreshThank, registerThank } from './thanks';
 
 const handleFulfilled = (state, { payload }) => {
   state.token = payload.token;
   state.user = payload.user;
+  state.isLoggedIn = true;
 };
 
 const authorizationSlice = createSlice({
   name: 'authorization',
   initialState: {
-    token: '',
-    user: null,
+    user: { name: null, email: null },
+    token: null,
+    isLoading: false,
+    isRefreshing: false,
   },
   extraReducers: builder => {
     builder
@@ -18,7 +21,19 @@ const authorizationSlice = createSlice({
       .addCase(loginThank.fulfilled, handleFulfilled)
       .addCase(logoutThank.fulfilled, (state, { payload }) => {
         state.token = '';
-        state.user = null;
+        state.user = { name: null, email: null };
+        state.isLoggedIn = false;
+      })
+      .addCase(refreshThank.pending, state => {
+        state.isRefreshing = true;
+      })
+      .addCase(refreshThank.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+      })
+      .addCase(refreshThank.rejected, state => {
+        state.isRefreshing = false;
       });
   },
 });

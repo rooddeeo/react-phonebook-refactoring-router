@@ -1,1 +1,1 @@
-export const authorizationSelect = (state)=> state.authorization.token
+export const authorizationSelect = state => state.authorization.isLoading;

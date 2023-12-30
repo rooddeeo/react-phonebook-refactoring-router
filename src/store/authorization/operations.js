@@ -8,6 +8,10 @@ const setToken = token => {
   api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 };
 
+const clearToken = () => {
+  axios.defaults.headers.common.Authorization = '';
+};
+
 export const registration = async user => {
   const { data } = await api.post(`/users/signup`, user);
   setToken(data.token);
@@ -22,6 +26,13 @@ export const loginApi = async user => {
 
 export const logout = async user => {
   const { data } = await api.post(`/users/logout`, user);
+  clearToken();
+  return data;
+};
+
+export const refresh = async persistedToken => {
+  setToken(persistedToken);
+  const { data } = await api.get(`/users/current`);
   setToken(data.token);
   return data;
 };
