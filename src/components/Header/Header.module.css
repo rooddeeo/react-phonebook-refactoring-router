@@ -23,3 +23,10 @@
   transition: transform 0.5s ease;
   transform: scale(1.1);
 }
+
+.headerListItemBtn {
+  border: none;
+  background-color: transparent;
+  color: rgb(192, 192, 192);
+  cursor: pointer;
+}

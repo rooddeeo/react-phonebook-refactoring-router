@@ -13,3 +13,15 @@ export const registration = async user => {
   setToken(data.token);
   return data;
 };
+
+export const loginApi = async user => {
+  const { data } = await api.post(`/users/login`, user);
+  setToken(data.token);
+  return data;
+};
+
+export const logout = async user => {
+  const { data } = await api.post(`/users/logout`, user);
+  setToken(data.token);
+  return data;
+};

@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerThank } from './thank';
+import { loginThank, logoutThank, registerThank } from './thanks';
+
+const handleFulfilled = (state, { payload }) => {
+  state.token = payload.token;
+  state.user = payload.user;
+};
 
 const authorizationSlice = createSlice({
   name: 'authorization',
@@ -8,11 +13,13 @@ const authorizationSlice = createSlice({
     user: null,
   },
   extraReducers: builder => {
-    builder.addCase(registerThank.fulfilled, (state, { payload }) => {
-      console.log(payload);
-      state.token = payload.token;
-      state.user = payload.user;
-    });
+    builder
+      .addCase(registerThank.fulfilled, handleFulfilled)
+      .addCase(loginThank.fulfilled, handleFulfilled)
+      .addCase(logoutThank.fulfilled, (state, { payload }) => {
+        state.token = '';
+        state.user = null;
+      });
   },
 });
 export const authorizationReducer = authorizationSlice.reducer;

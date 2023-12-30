@@ -1,9 +1,17 @@
 import { Link } from 'react-router-dom';
 import css from './LoginForm.module.css';
+import { useDispatch } from 'react-redux';
+import { loginThank } from 'store/authorization/thanks';
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
   const handleSubmit = event => {
     event.preventDefault();
+    const login = {
+      email: event.target.email.value,
+      password: event.target.password.value,
+    };
+    dispatch(loginThank(login));
   };
   return (
     <div className={css.loginForm}>

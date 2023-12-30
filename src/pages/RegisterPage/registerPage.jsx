@@ -2,25 +2,19 @@
 
 import RegisterForm from 'components/RegisterForm/RegisterForm';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { registerThank } from 'store/authorization/thank';
+import { authorizationSelect } from 'store/authorization/selectors';
 
 const RegisterPage = () => {
-  const isAuthorization = useSelector(state => state.authorization.token);
-  const dispatch = useDispatch();
-
+  const isAuthorization = useSelector(authorizationSelect);
   const navigate = useNavigate();
-
-  const register = user => {
-    dispatch(registerThank(user));
-  };
 
   useEffect(() => {
     isAuthorization && navigate('/');
   }, [isAuthorization, navigate]);
 
-  return <RegisterForm register={register} />;
+  return <RegisterForm />;
 };
 
 export default RegisterPage;

@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 import css from './RegisterForm.module.css';
 import { useDispatch } from 'react-redux';
+import { registerThank } from 'store/authorization/thanks';
 
-const RegisterForm = ({ register }) => {
+const RegisterForm = () => {
   const dispatch = useDispatch();
   const handleSubmit = event => {
     event.preventDefault();
@@ -11,7 +12,8 @@ const RegisterForm = ({ register }) => {
       email: event.target.email.value,
       password: event.target.password.value,
     };
-    dispatch(register(newUser));
+
+    dispatch(registerThank(newUser));
   };
   return (
     <div className={css.registerForm}>
