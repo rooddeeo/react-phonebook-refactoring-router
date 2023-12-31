@@ -24,11 +24,14 @@
   height: 20px;
   margin-bottom: 20px;
   background-color: transparent;
+  border: none;
   border-bottom: 1px solid rgb(57, 182, 231);
 }
 
 .registerInputForm:focus {
-  border: 1px solid rgb(57, 182, 231);
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid rgb(57, 182, 231);
   outline: none;
 }
 

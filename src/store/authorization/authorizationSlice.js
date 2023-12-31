@@ -20,7 +20,7 @@ const authorizationSlice = createSlice({
       .addCase(registerThank.fulfilled, handleFulfilled)
       .addCase(loginThank.fulfilled, handleFulfilled)
       .addCase(logoutThank.fulfilled, (state, { payload }) => {
-        state.token = '';
+        state.token = null;
         state.user = { name: null, email: null };
         state.isLoggedIn = false;
       })

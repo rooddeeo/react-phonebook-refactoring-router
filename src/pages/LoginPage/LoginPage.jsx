@@ -2,10 +2,10 @@ import LoginForm from 'components/LoginForm/LoginForm';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { authorizationSelect } from 'store/authorization/selectors';
+import { authorizationLoadingSelect } from 'store/authorization/selectors';
 
 const LoginPage = () => {
-  const isAuthorization = useSelector(authorizationSelect);
+  const isAuthorization = useSelector(authorizationLoadingSelect);
   const navigate = useNavigate();
 
   useEffect(() => {

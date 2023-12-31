@@ -6,19 +6,23 @@ import Layout from './Layout/Layout.jsx';
 import LoginPage from 'pages/LoginPage/LoginPage.jsx';
 import { RestrictedRoute } from './RestrictedRoute.js';
 import { PrivateRoute } from './PrivateRoute.js';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshThank } from '../store/authorization/thanks.js';
+import { authorizationRefreshingSelect } from 'store/authorization/selectors.js';
+import Loader from './Loader/Loader.jsx';
 
 const App = () => {
   const dispatch = useDispatch();
-  dispatch(refreshThank());
+  const isRefreshing = useSelector(authorizationRefreshingSelect);
 
   useEffect(() => {
     dispatch(refreshThank());
   }, [dispatch]);
 
-  return (
+  return isRefreshing ? (
+    <Loader />
+  ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />

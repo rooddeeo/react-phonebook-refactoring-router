@@ -2,11 +2,15 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import css from './Header.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { authorizationSelect } from 'store/authorization/selectors';
+import {
+  authorizationLoadingSelect,
+  authorizationUserSelect,
+} from 'store/authorization/selectors';
 import { logoutThank } from 'store/authorization/thanks';
 
 const Header = () => {
-  const isAuthorization = useSelector(authorizationSelect);
+  const isAuthorization = useSelector(authorizationLoadingSelect);
+  const user = useSelector(authorizationUserSelect);
 
   const dispatch = useDispatch();
   const handleClick = () => {
@@ -28,6 +32,9 @@ const Header = () => {
                 <button className={css.headerListItemBtn} onClick={handleClick}>
                   {isAuthorization ? 'LogOut' : 'LogIn'}
                 </button>
+              </li>
+              <li>
+                <p className={css.headerListItemEmail}>User: {user.email}</p>
               </li>
             </>
           ) : (

@@ -9,8 +9,8 @@ const ContactForm = () => {
   const { contacts } = useSelector(state => state.contacts);
   const dispatch = useDispatch();
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSubmit = event => {
+    event.preventDefault();
     addContact({ name, number });
     setName('');
     setNumber('');
@@ -38,7 +38,7 @@ const ContactForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div className={css.contactBlock}>
-        <label className={css.contactFormLable}>Name</label>
+        <label className={css.contactFormLable}>Name:</label>
         <input
           className={css.contactInputForm}
           type="text"
@@ -49,10 +49,11 @@ const ContactForm = () => {
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
         />
-        <label className={css.contactFormLable}>Number</label>
+        <label className={css.contactFormLable}>Phone Number:</label>
         <input
           className={css.contactInputForm}
           type="tel"
+          vent
           name="number"
           value={number}
           onChange={handleChange}

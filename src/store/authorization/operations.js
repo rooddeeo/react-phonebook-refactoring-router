@@ -1,4 +1,3 @@
-// import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 export const api = axios.create({
   baseURL: 'https://connections-api.herokuapp.com',
@@ -33,6 +32,5 @@ export const logout = async user => {
 export const refresh = async persistedToken => {
   setToken(persistedToken);
   const { data } = await api.get(`/users/current`);
-  setToken(data.token);
   return data;
 };
