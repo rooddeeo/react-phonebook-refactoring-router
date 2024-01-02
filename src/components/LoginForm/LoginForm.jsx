@@ -22,8 +22,8 @@ const LoginForm = () => {
             className={css.loginInputForm}
             type="email"
             name="email"
-            pattern="/^[^\s@]+@[^\s@]+\.[^\s@]+$/"
-            title="Email must contain the '@' symbol as well as a period. For example mango@gmail.com"
+            // pattern="/^[^\s@]+@[^\s@]+\.[^\s@]+$/"
+            // title="Email must contain the '@' symbol as well as a period. For example mango@gmail.com"
             required
           />
           <label className={css.loginFormLable}>Password:</label>

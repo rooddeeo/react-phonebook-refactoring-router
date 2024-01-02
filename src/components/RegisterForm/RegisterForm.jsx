@@ -33,8 +33,8 @@ const RegisterForm = () => {
             className={css.registerInputForm}
             type="email"
             name="email"
-            pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
-            title="Email must contain the '@' symbol. For example mango@gmail.com"
+            // pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+            // title="Email must contain the '@' symbol. For example mango@gmail.com"
             required
           />
           <label className={css.registerFormLable}>Password:</label>
