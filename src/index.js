@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import { store } from 'store/store';
 
 ReactDOM.createRoot(document.querySelector('#root')).render(
-  <BrowserRouter basename="/goit-react-hw-08-phonebook">
+  <BrowserRouter basename="/react-phonebook-refactoring-router">
     <Provider store={store}>
       <App />
     </Provider>
