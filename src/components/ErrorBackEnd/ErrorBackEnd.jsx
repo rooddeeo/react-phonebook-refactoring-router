@@ -5,7 +5,7 @@ const ErrorBackEnd = ({ errorBackEnd }) => {
   return (
     <div className={css.overlay}>
       <h1 className={css.overlayTitleError}>
-        Ups! Error:{' '}
+        Ups! Error:
         <span className={css.overlayTitleErrorRed}>{errorBackEnd}</span>
       </h1>
       <div className={css.overlayLinks}>
